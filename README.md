@@ -28,6 +28,32 @@ A **NestJS-based application** designed to help working students optimize their 
 
 ---
 
+## 🚀 Project Architecture
+
+study-schedule-optimizer/
+├── src/
+│ ├── app.module.ts
+│ ├── main.ts
+│ ├── seed-cli.ts # CLI tool for database seeding
+│ ├── data-seed.service.ts # Database seeding service
+│ ├── seed.module.ts # Module for database seeding
+│ ├── user/ # User management
+│ ├── activity/ # Activity management
+│ ├── schedule/ # Schedule management
+│ └── optimizer/ # Schedule optimization
+│ ├── optimizer.module.ts
+│ ├── optimizer.service.ts
+│ └── algorithms/
+│ ├── genetic-algorithm.ts
+│ └── energy-pattern-analyzer.ts
+├── test/
+├── .env
+├── .gitignore
+├── nest-cli.json
+├── package.json
+├── tsconfig.json
+└── README.md
+
 ## 🚀 Getting Started
 
 ### 📋 Prerequisites
