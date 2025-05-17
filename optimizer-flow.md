@@ -2,14 +2,14 @@
 
 This document explains the operational flow of the Study Schedule Optimizer from data initialization to schedule optimization.
 
----
-
 ## 1. System Initialization Flow
 
-┌─────────────┐ ┌─────────────┐ ┌───────────────────────────┐
+```
+┌─────────────┐      ┌──────────────┐      ┌────────────────┐
 │ Application │──────► Data Seeding │──────► Database Ready │
-│ Startup │ │ Process │ │ for Usage │
-└─────────────┘ └─────────────┘ └───────────────────────────┘
+│   Startup   │      │   Process    │      │   for Usage    │
+└─────────────┘      └──────────────┘      └────────────────┘
+```
 
 ### 1.1 Application Startup
 
@@ -29,14 +29,14 @@ This document explains the operational flow of the Study Schedule Optimizer from
 - MongoDB populated with realistic data
 - System ready to handle optimization requests
 
----
-
 ## 2. User Activity Management Flow
 
-┌─────────┐ ┌───────────────┐ ┌──────────────────┐
-│ Create │──────► View/Update/ │──────► Activity │
-│ Activity│ │Delete Activity│ │ Repository │
-└─────────┘ └───────────────┘ └──────────────────┘
+```
+┌──────────┐       ┌───────────────┐       ┌─────────────┐
+│  Create  │──────► View/Update/   │──────►  Activity    │
+│ Activity │       │Delete Activity│       │ Repository  │
+└──────────┘       └───────────────┘       └─────────────┘
+```
 
 ### 2.1 Create Activity
 
@@ -56,28 +56,26 @@ This document explains the operational flow of the Study Schedule Optimizer from
 - Maintains relationships with users and schedules
 - Provides quick retrieval for optimization
 
----
-
 ## 3. Schedule Optimization Flow
 
-                                       ┌───────────────┐
-                                  ┌────► Energy-Based  │
-                                  │    └───────────────┘
-
-┌──────────────┐ ┌────────────┐┐ ┌─────────────────────┐
-│ Optimization │────►Optimization│├────►Deadline-Based │
-│ Request │ │ Strategy ││ └────────────────────────────┘
-└──────────────┘ └────────────┘┘ ┌─────────────────────┐
-└────► Balanced │
-└───────────────┘
+```
+                                        ┌────────────────┐
+                                  ┌────► Energy-Based    │
+                                  │     └────────────────┘
+┌──────────────┐    ┌────────────┐┐     ┌────────────────┐
+│ Optimization │────► Optimization│├────► Deadline-Based │
+│   Request    │    │  Strategy   ││    └────────────────┘
+└──────────────┘    └────────────┘┘     ┌────────────────┐
+                                  └────► Balanced        │
+                                        └────────────────┘
 
        │                  │                   │
        ▼                  ▼                   ▼
-
-┌──────────────┐ ┌────────────┐ ┌──────────────┐
-│ Data Loading │───►│ Genetic │───►│ Optimized │
-│ │ │ Algorithm │ │ Schedule │
-└──────────────┘ └────────────┘ └──────────────┘
+┌──────────────┐    ┌────────────┐    ┌─────────────┐
+│ Data Loading │───►│  Genetic   │───►│ Optimized   │
+│              │    │ Algorithm  │    │  Schedule   │
+└──────────────┘    └────────────┘    └─────────────┘
+```
 
 ### 3.1 Optimization Request
 
@@ -100,14 +98,14 @@ This document explains the operational flow of the Study Schedule Optimizer from
 
 ### 3.4 Genetic Algorithm Execution
 
-- **Initialization**: Creates initial population of possible schedules
-- **Evaluation**: Calculates fitness based on strategy criteria
-- **Selection**: Chooses best schedules as parents
-- **Crossover**: Combines parent schedules to create new ones
-- **Mutation**: Introduces random changes to schedules
-- **Resolution**: Detects and fixes scheduling conflicts
-- **Evolution**: Repeats process for multiple generations
-- **Finalization**: Selects best schedule as solution
+1. **Initialization**: Creates initial population of possible schedules
+2. **Evaluation**: Calculates fitness based on strategy criteria
+3. **Selection**: Chooses best schedules as parents
+4. **Crossover**: Combines parent schedules to create new ones
+5. **Mutation**: Introduces random changes to schedules
+6. **Resolution**: Detects and fixes scheduling conflicts
+7. **Evolution**: Repeats process for multiple generations
+8. **Finalization**: Selects best schedule as solution
 
 ### 3.5 Optimized Schedule Generation
 
@@ -115,14 +113,14 @@ This document explains the operational flow of the Study Schedule Optimizer from
 - Schedule stored in database
 - Returned to user interface for display
 
----
-
 ## 4. Feedback and Adaptation Flow
 
-┌─────────────┐ ┌────────────────┐ ┌──────────────────────┐
-│ Completion │───►│ Energy Pattern │───►│ Improved Future │
-│ Status │ │ Analysis │ │ Optimization │
-└─────────────┘ └────────────────┘ └──────────────────────┘
+```
+┌─────────────┐    ┌────────────────┐     ┌──────────────────┐
+│ Completion  │───►│ Energy Pattern │───► │ Improved Future  │
+│   Status    │    │    Analysis    │     │   Optimization   │
+└─────────────┘    └────────────────┘     └──────────────────┘
+```
 
 ### 4.1 Completion Status
 
@@ -141,14 +139,14 @@ This document explains the operational flow of the Study Schedule Optimizer from
 - Algorithm adapts to user's actual productivity trends
 - Schedules become increasingly personalized over time
 
----
-
 ## 5. User Interaction Flow
 
-┌───────────┐ ┌─────────────┐ ┌────────────────┐ ┌────────────┐
-│ Profile │───►│ Schedule │───►│ Optimization │───►│ Daily │
-│ Setup │ │ Creation │ │ Request │ │ View │
-└───────────┘ └─────────────┘ └────────────────┘ └────────────┘
+```
+┌───────────┐    ┌─────────────┐    ┌────────────────┐    ┌────────────┐
+│  Profile  │───►│  Schedule   │───►│  Optimization  │───►│   Daily    │
+│  Setup    │    │  Creation   │    │    Request     │    │   View     │
+└───────────┘    └─────────────┘    └────────────────┘    └────────────┘
+```
 
 ### 5.1 Profile Setup
 
