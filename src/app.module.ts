@@ -7,12 +7,9 @@ import { UserModule } from "./user/user.module";
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      "mongodb+srv://MCSE-1102:kdusdgCO11K02OCwo4krJ@c0.q1ttovb.mongodb.net/ScheduleOptimizerDb?retryWrites=true&w=majority&appName=c0",
-      {
-        autoIndex: true,
-      }
-    ),
+    MongooseModule.forRoot(process.env.MONGODB_URI || "", {
+      autoIndex: true,
+    }),
     UserModule,
     ScheduleModule,
     ActivityModule,
